@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import '../app/App.css';
 import Logo from "../../images/logoFull.png"
-import Link from "react-router-dom";
+import {NavBarDetails} from "../helpers/NavBarDetail";
 
 
 class Header extends Component {
@@ -17,16 +17,7 @@ class Header extends Component {
                             aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"/>
                     </button>
-                    <div className="collapse navbar-collapse" id="navbarResponsive">
-                        <ul className="navbar-nav ml-auto">
-                            <li className="nav-item">
-                                <a className="nav-link" href="/signin">LOGIN</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="/">ABOUT</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <NavBarDetails/>
                 </div>
             </nav>
         );
@@ -34,3 +25,4 @@ class Header extends Component {
 }
 
 export default Header;
+

@@ -3,6 +3,8 @@ import Input from "@material-ui/core/Input";
 import Home from "../home/Home";
 import axios from 'axios'
 import './Login.css'
+import Header from "../common/Header";
+import Footer from "../common/Footer";
 
 
 class Login extends Component {
@@ -36,7 +38,7 @@ class Login extends Component {
     render() {
         return (
             <section>
-                <Home/>
+                <Header/>
                 <div className="login-form">
                     <form onSubmit={e => this.submit(e)} noValidate autoComplete="off">
                         <h2 className="text-center">Log in</h2>
@@ -56,11 +58,11 @@ class Login extends Component {
                             <a href="#" className="pull-right">Forgot Password?</a>
                         </div>
                     </form>
-                    <p className="text-center"><a href="#">Create an Account</a></p>
+                    <p className="text-center"><a href="/singup">Create an Account</a></p>
                 </div>
+                <Footer/>
             </section>
         );
     }
 }
-
 export default Login;

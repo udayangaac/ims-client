@@ -2,9 +2,11 @@ import React, {Component} from 'react';
 import './App.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import Home from '../home/Home'
-import Login from "../login/Login";
+import Login from "../anonymous/Login";
 import Dashboard from "../dashboard/Dashboard";
-import Auth from "../auth/Auth";
+import Auth from "../authentication/Auth";
+import Register from "../anonymous/Register";
+import Logout from "../authentication/Logout";
 
 
 class App extends Component {
@@ -13,9 +15,11 @@ class App extends Component {
             <BrowserRouter>
                 <Switch>
                     <Route path="/signin" exact component={Login}/>
+                    <Route path="/signup" exact component={Register}/>
                     <Route path="/" exact component={Home}/>
                     <Auth>
                         <Route path="/dashboard" exact component={Dashboard}/>
+                        <Route path="/logout" exact component={Logout}/>
                     </Auth>
                 </Switch>
             </BrowserRouter>

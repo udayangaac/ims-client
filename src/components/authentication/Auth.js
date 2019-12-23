@@ -11,7 +11,6 @@ class Auth extends Component {
             user: undefined
         }
     }
-
     componentDidMount() {
         const jwt = getJwt();
         if (!jwt) {
@@ -22,16 +21,20 @@ class Auth extends Component {
                 headers: {
                     Authorization: 'Bearer ' + jwt,
                 }
-            }).then(res => this.setState({
-            user: res.data
-        })).catch(err => {
-            localStorage.removeItem('');
+            }).then(res => {
+                this.setState({
+                    user: res.data
+                });
+                localStorage.setItem('profile-name', res.data.name);
+            }
+        ).catch(err => {
+            localStorage.removeItem('auth-token');
             this.props.history.push('/signin')
         })
     }
 
     render() {
-        if (this.state.user == undefined) {
+        if (this.state.user === undefined) {
             return (
                 <section>
                     <Home/>
