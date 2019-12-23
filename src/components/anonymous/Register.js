@@ -43,7 +43,7 @@ class Register extends Component {
     render() {
         return (
             <section>
-                <Header props={this.props}/>
+                <Header/>
                 <div className="login-form">
                     <form onSubmit={e => this.submit(e)} noValidate autoComplete="off">
                         <h2 className="text-center">Register </h2>
