@@ -33,6 +33,11 @@ class Transaction extends Component {
         })
     }
 
+    doFilter(e) {
+        e.preventDefault();
+        console.log("Filters are applied")
+    }
+
     render() {
         let stakeholders = this.state.stakeholders;
         console.log(stakeholders);
@@ -43,11 +48,11 @@ class Transaction extends Component {
             );
             console.log(optionItems)
         }
-
+        
         return (
             <section>
                 <h4>Filters</h4>
-                <form>
+                <form onSubmit={e => this.doFilter(e)}>
                     <div className="form-row align-items-center">
                         <div className="col-auto">
                             <label className="sr-only" htmlFor="StakeHolder">StakeHolder</label>
@@ -66,8 +71,8 @@ class Transaction extends Component {
                                 <div className="input-group-prepend">
                                     <div className="input-group-text">Date</div>
                                 </div>
-                                <input type="text" className="form-control" id="Date"
-                                       placeholder="Date"/>
+                                <input type="date" name="bday" max="3000-12-31"
+                                       min="1000-01-01" className="form-control"/>
                             </div>
                         </div>
                         <div className="col-auto">

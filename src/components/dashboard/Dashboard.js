@@ -3,6 +3,7 @@ import '../app/App.css';
 import Header from "../common/Header";
 import Footer from "../common/Footer";
 import Transaction from "./Transaction";
+import Stakeholder from "./Stakeholder";
 
 
 class Dashboard extends Component {
@@ -30,14 +31,10 @@ class Dashboard extends Component {
                             <Transaction/>
                         </div>
                         <div id="menu1" className="container tab-pane fade"><br/>
-                            <h3>Menu 1</h3>
-                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                                ea commodo consequat.</p>
+                           <Stakeholder/>
                         </div>
                         <div id="menu2" className="container tab-pane fade"><br/>
                             <h3>Menu 2</h3>
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                laudantium, totam rem aperiam.</p>
                         </div>
                     </div>
                 </div>

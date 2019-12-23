@@ -35,10 +35,11 @@ class Login extends Component {
             this.props.history.push('/dashboard')
         });
     }
+
     render() {
         return (
             <section>
-                <Header/>
+                <Header props={this.props}/>
                 <div className="login-form">
                     <form onSubmit={e => this.submit(e)} noValidate autoComplete="off">
                         <h2 className="text-center">Log in</h2>
@@ -65,4 +66,5 @@ class Login extends Component {
         );
     }
 }
+
 export default Login;
