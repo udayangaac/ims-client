@@ -4,6 +4,7 @@ import Header from "../common/Header";
 import Footer from "../common/Footer";
 import Transaction from "./Transaction";
 import Stakeholder from "./Stakeholder";
+import DashboardFooter from "../common/DashboardFooter";
 
 
 class Dashboard extends Component {
@@ -12,6 +13,7 @@ class Dashboard extends Component {
             <section>
                 <Header/>
                 <div className="container">
+                    <br/>
                     <h3>IMS Dashboard</h3>
                     <br/>
                     <ul className="nav nav-tabs" role="tablist">
@@ -38,7 +40,7 @@ class Dashboard extends Component {
                         </div>
                     </div>
                 </div>
-                <Footer/>
+                <DashboardFooter/>
             </section>
         );
     }

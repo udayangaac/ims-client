@@ -28,7 +28,7 @@ class Register extends Component {
 
     submit(e) {
         e.preventDefault();
-        axios.put('http://localhost:8001/signup', {
+        axios.post('http://localhost:8001/signup', {
             name: this.state.name,
             email: this.state.email,
             username: this.state.username,
@@ -48,23 +48,23 @@ class Register extends Component {
                     <form onSubmit={e => this.submit(e)} noValidate autoComplete="off">
                         <h2 className="text-center">Register </h2>
                         <div className="form-group">
-                            <input placeholder="Name" type="text" name="username"
+                            <input className="form-control" placeholder="Name" type="text" name="username"
                                    onChange={e => this.change(e)} value={this.state.name}/>
                         </div>
                         <div className="form-group">
-                            <input placeholder="E-mail" type="text" name="password"
+                            <input className="form-control" placeholder="E-mail" type="text" name="email"
                                    onChange={e => this.change(e)} value={this.state.email}/>
                         </div>
                         <div className="form-group">
-                            <input placeholder="Username" type="text" name="password"
+                            <input className="form-control" placeholder="Username" type="text" name="username"
                                    onChange={e => this.change(e)} value={this.state.username}/>
                         </div>
                         <div className="form-group">
-                            <input placeholder="Business Name" type="text" name="password"
+                            <input className="form-control" placeholder="Business Name" type="text" name="businessProfile"
                                    onChange={e => this.change(e)} value={this.state.businessProfile}/>
                         </div>
                         <div className="form-group">
-                            <input placeholder="Password" type="password" name="password"
+                            <input className="form-control" placeholder="Password" type="password" name="password"
                                    onChange={e => this.change(e)} value={this.state.password}/>
                         </div>
                         <div className="form-group">

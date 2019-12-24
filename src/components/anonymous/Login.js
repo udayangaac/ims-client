@@ -44,11 +44,11 @@ class Login extends Component {
                     <form onSubmit={e => this.submit(e)} noValidate autoComplete="off">
                         <h2 className="text-center">Log in</h2>
                         <div className="form-group">
-                            <input placeholder="Username" type="text" name="username"
+                            <input className="form-control" placeholder="Username" type="text" name="username"
                                    onChange={e => this.change(e)} value={this.state.username}/>
                         </div>
                         <div className="form-group">
-                            <input placeholder="Password" type="password" name="password"
+                            <input className="form-control" placeholder="Password" type="password" name="password"
                                    onChange={e => this.change(e)} value={this.state.password}/>
                         </div>
                         <div className="form-group">

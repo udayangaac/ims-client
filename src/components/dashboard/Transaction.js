@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import '../app/App.css';
 import {getJwt} from "../helpers/Jwt";
 import axios from "axios";
+import {getURL} from "../helpers/Config";
 
 
 class Transaction extends Component {
@@ -18,7 +19,7 @@ class Transaction extends Component {
             // return to login page if
             this.props.history.push('/signin')
         }
-        axios.get('http://localhost:8001/api/v1.0/stakeholders',
+        axios.get(getURL("/api/v1.0/stakeholders"),
             {
                 headers: {
                     Authorization: 'Bearer ' + jwt,
@@ -42,13 +43,13 @@ class Transaction extends Component {
         let stakeholders = this.state.stakeholders;
         console.log(stakeholders);
         let optionItems;
-        if (stakeholders !== undefined) {
+        if (stakeholders !== undefined && stakeholders !== null) {
             optionItems = stakeholders.map((stakeholder) =>
                 <option key={stakeholder.id}>{stakeholder.name}</option>
             );
             console.log(optionItems)
         }
-        
+
         return (
             <section>
                 <h4>Filters</h4>
