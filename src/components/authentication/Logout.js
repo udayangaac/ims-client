@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {clearStorage} from "../helpers/Jwt";
+import {clearStorage} from "../helpers/LocalStorage";
 
 
 class Logout extends Component {

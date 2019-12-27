@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import axios from 'axios'
 import Home from "../home/Home";
 import {withRouter} from 'react-router-dom'
-import {getJwt} from "../helpers/Jwt";
+import {getJwt} from "../helpers/LocalStorage";
+import {getURL} from "../helpers/Config";
 
 class Auth extends Component {
     constructor(props) {
@@ -11,12 +12,13 @@ class Auth extends Component {
             user: undefined
         }
     }
+
     componentDidMount() {
         const jwt = getJwt();
         if (!jwt) {
             this.props.history.push('/signin')
         }
-        axios.get('http://localhost:8001/api/v1.0/user',
+        axios.get(getURL("/api/v1.0/user"),
             {
                 headers: {
                     Authorization: 'Bearer ' + jwt,
@@ -25,7 +27,7 @@ class Auth extends Component {
                 this.setState({
                     user: res.data
                 });
-                localStorage.setItem('profile-name', res.data.name);
+                localStorage.setItem('profile-ims', JSON.stringify(res.data));
             }
         ).catch(err => {
             localStorage.removeItem('auth-token');

@@ -1,20 +1,38 @@
 import React, {Component} from 'react';
 import '../app/App.css';
 import Header from "../common/Header";
-import Footer from "../common/Footer";
 import Transaction from "./Transaction";
 import Stakeholder from "./Stakeholder";
 import DashboardFooter from "../common/DashboardFooter";
+import Item from "./Item";
+import './Dashboard.css'
+import {getProfile} from "../helpers/LocalStorage";
 
 
 class Dashboard extends Component {
+
+
+
     render() {
+        let businessProfileName = "";
+        let profile = getProfile();
+        if (profile !== null && profile !== undefined ) {
+            businessProfileName = profile.business_profile_name;
+        }
         return (
             <section>
                 <Header/>
                 <div className="container">
                     <br/>
-                    <h3>IMS Dashboard</h3>
+                    <div className="row">
+                        <div className="col-sm-6 col-md-6">
+                            <h4>DASHBOARD</h4>
+                        </div>
+                        <div className="col-sm-6 col-md-6">
+                            <h5>{businessProfileName}</h5>
+                        </div>
+                    </div>
+
                     <br/>
                     <ul className="nav nav-tabs" role="tablist">
                         <li className="nav-item">
@@ -33,10 +51,10 @@ class Dashboard extends Component {
                             <Transaction/>
                         </div>
                         <div id="menu1" className="container tab-pane fade"><br/>
-                           <Stakeholder/>
+                            <Stakeholder/>
                         </div>
                         <div id="menu2" className="container tab-pane fade"><br/>
-                            <h3>Menu 2</h3>
+                            <Item/>
                         </div>
                     </div>
                 </div>

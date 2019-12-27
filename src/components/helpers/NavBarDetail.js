@@ -1,14 +1,19 @@
 import React from "react";
 import Dashboard from "../dashboard/Dashboard";
+import {getProfile} from "./LocalStorage";
 
 
 export const NavBarDetails = () => {
     const token = localStorage.getItem("auth-token");
-    const name = localStorage.getItem("profile-name");
+    let name = "Your Profile";
+    let profile = getProfile();
+    if (profile !== null && profile !== undefined ) {
+        name = profile.name;
+    }
     if (token === null) {
         return (
             <div className="collapse navbar-collapse" id="navbarResponsive">
-                <ul className="navbar-nav ml-auto">
+                <ul className="navbar-nav ml-auto nav-list">
                     <li className="nav-item">
                         <a className="nav-link" href="/">HOME</a>
                     </li>
@@ -35,7 +40,7 @@ export const NavBarDetails = () => {
                     <a className="nav-link" href="/dashboard">DASHBOARD</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="/">ABOUT</a>
+                    <a className="nav-link" href="/about">ABOUT</a>
                 </li>
                 <li className="nav-item dropdown">
                     <a className="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"

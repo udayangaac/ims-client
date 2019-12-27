@@ -1,0 +1,15 @@
+.navbar-default {
+    background-color: #e8e8e8;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #545454; /*Change active text color here*/
+    font-family: 'Montserrat', sans-serif;
+    font-weight: normal;
+}
+
+.navbar-default .navbar-nav > li > a:hover{
+    color: #f89c2a; /*Change active text color here*/
+    font-family: 'Montserrat', sans-serif;
+    font-weight: normal;
+}

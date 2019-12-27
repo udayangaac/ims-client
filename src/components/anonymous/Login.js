@@ -5,6 +5,7 @@ import axios from 'axios'
 import './Login.css'
 import Header from "../common/Header";
 import Footer from "../common/Footer";
+import {getURL} from "../helpers/Config";
 
 
 class Login extends Component {
@@ -26,7 +27,7 @@ class Login extends Component {
 
     submit(e) {
         e.preventDefault();
-        axios.post('http://localhost:8001/signin', {
+        axios.post(getURL("/signin"), {
             username: this.state.username,
             password: this.state.password
         }).then(resp => {
@@ -35,7 +36,6 @@ class Login extends Component {
             this.props.history.push('/dashboard')
         });
     }
-
     render() {
         return (
             <section>

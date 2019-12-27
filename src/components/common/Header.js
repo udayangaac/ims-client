@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
-import '../app/App.css';
-import Logo from "../../images/logoFull.png"
+import ProjectLogo from '../../images/projectLogo.png'
 import {NavBarDetails} from "../helpers/NavBarDetail";
+import "./Header.css"
 
 
 class Header extends Component {
     render() {
         return (
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+            <nav id="mainNav" className="navbar navbar-expand-lg navbar-default static-top">
                 <div className="container">
                     <a className="navbar-brand" href="#">
-                        <img src={Logo} height={30} alt="logo"/>
+                        <img src={ProjectLogo} height={40} alt="logo"/>
                     </a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"

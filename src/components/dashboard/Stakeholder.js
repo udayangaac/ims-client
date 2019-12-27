@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import {getJwt} from "../helpers/Jwt";
+import {getJwt} from "../helpers/LocalStorage";
 import axios from "axios";
-import './Stakeholder.css'
 import {getURL} from "../helpers/Config";
 
 
@@ -174,9 +173,9 @@ class Stakeholder extends Component {
 
     render() {
         let stakeholders = this.state.stakeholders;
-        let optionItems;
+        let stakeholderList;
         if (stakeholders !== undefined && stakeholders !== null) {
-            optionItems = stakeholders.map((stakeholder) =>
+            stakeholderList = stakeholders.map((stakeholder) =>
                 <li className="list-group-item d-flex justify-content-between align-items-center">
                     <div className="container-fluid">
                         <div className="row">
@@ -204,7 +203,7 @@ class Stakeholder extends Component {
             <section>
                 <h4>List</h4>
                 <ul className="list-group">
-                    {optionItems}
+                    {stakeholderList}
                 </ul>
                 <br/>
                 <div className="form-group">
