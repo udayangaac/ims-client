@@ -20,9 +20,9 @@ export const NavBarDetails = () => {
                     <li className="nav-item">
                         <a className="nav-link" href="/signin">LOGIN</a>
                     </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="/signup">REGISTER</a>
-                    </li>
+                    {/*<li className="nav-item">*/}
+                    {/*    <a className="nav-link" href="/signup">REGISTER</a>*/}
+                    {/*</li>*/}
                     <li className="nav-item">
                         <a className="nav-link" href="/about">ABOUT</a>
                     </li>
@@ -45,9 +45,10 @@ export const NavBarDetails = () => {
                 <li className="nav-item dropdown">
                     <a className="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
-                        <i className="fa fa-user"/>{name}</a>
+                        <i className="fa fa-user-circle-o"/> {name}</a>
                     <div className="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-                        <a className="dropdown-item" href="/logout">LOGOUT</a>
+                        <a className="dropdown-item" href="/logout">
+                            <i className="fa fa-lock"/> LOGOUT</a>
                     </div>
                 </li>
             </ul>

@@ -159,9 +159,10 @@ class Item extends Component {
                                 {"RS : " + item.price}
                             </div>
                             <div className="col-sm-3">
-                                <button className="btn btn-secondary btn-sm float-right" data-toggle="modal"
+                                <button className="btn btn-toolbar btn-sm float-right" data-toggle="modal"
                                         data-target="#editItemModal"
-                                        onClick={e => this.onItemEdit(e, item.id)}>Edit
+                                        onClick={e => this.onItemEdit(e, item.id)}>
+                                    <i className="fa fa-edit"/>
                                 </button>
                             </div>
                         </div>
@@ -171,17 +172,26 @@ class Item extends Component {
         }
         return (
             <section>
-                <h4>Item List</h4>
-                <ul className="list-group">
-                    {itemList}
-                </ul>
-                <br/>
-                <div className="form-group">
-                    <button type="button" className="btn btn-primary btn-sm" data-toggle="modal"
-                            onClick={e => {
-                            }}
-                            data-target="#addItemModal">Add
-                    </button>
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-lg-6">
+                            <h5>Items List</h5>
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="form-group">
+                                <button type="button" className="btn btn-dark btn-sm " data-toggle="modal"
+                                        data-target="#addItemModal"><i className="fa fa-plus-circle"/> Add Item
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-lg-12">
+                            <ul className="list-group">
+                                {itemList}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
                 {/*add item model*/}
@@ -190,7 +200,10 @@ class Item extends Component {
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title">Add Item</h5>
+                                <h5 className="">Add Item</h5>
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true" className="white-text">&times;</span>
+                                </button>
                             </div>
                             <div className="modal-body">
                                 <form onSubmit={e => {
@@ -208,15 +221,11 @@ class Item extends Component {
                                                name="priceAdd" onChange={e => this.change(e)}/>
                                     </div>
                                     <div className="form-group">
-                                        <button type="submit" className="btn btn-primary btn-sm button-margin">Save
+                                        <button type="submit" className="btn btn-dark btn-sm button-margin">
+                                            <i className="fa fa-save"/> Save
                                         </button>
                                     </div>
                                 </form>
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary btn-sm button-margin"
-                                        data-dismiss="modal">Close
-                                </button>
                             </div>
                         </div>
                     </div>
@@ -228,7 +237,10 @@ class Item extends Component {
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title">Edit Item</h5>
+                                <h5 className="">Edit Item</h5>
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true" className="white-text">&times;</span>
+                                </button>
                             </div>
                             <div className="modal-body">
                                 <form onSubmit={e => {
@@ -248,17 +260,15 @@ class Item extends Component {
                                                name="priceEdit" onChange={e => this.change(e)}/>
                                     </div>
                                     <div className="form-group">
-                                        <button type="submit" className="btn btn-primary btn-sm button-margin">Save
+                                        <button onClick={e => this.onItemDelete(e)}
+                                                className="btn btn-danger btn-sm float-left button-margin">
+                                            <i className="fa fa-trash"/> Delete
                                         </button>
-                                        <button onClick={e => this.onItemDelete(e)} className="btn btn-danger btn-sm button-margin">Delete
+                                        <button type="submit" className="btn btn-dark btn-sm float-right button-margin">
+                                            <i className="fa fa-save"/> Save
                                         </button>
                                     </div>
                                 </form>
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary btn-sm button-margin"
-                                        data-dismiss="modal">Close
-                                </button>
                             </div>
                         </div>
                     </div>

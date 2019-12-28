@@ -2,34 +2,34 @@ import React, {Component} from 'react';
 import '../app/App.css';
 import Header from "../common/Header";
 import Footer from "../common/Footer";
-import AccountImage from "../../images/bg_account.png"
-import StakeholderImage from "../../images/bg_stakeholders.png"
-import StoreImage from "../../images/bg_store.jpg"
+import './Home.css'
+import IntroImg from '../../images/intro-img.svg'
+import IntroBg from "../../images/intro-bg.jpg";
 
+let introStyle = {
+    backgroundImage: "url(" + IntroBg + ")",
+};
 
 class Home extends Component {
     render() {
         return (
             <section>
                 <Header/>
-                {/*<div id="carouselExampleSlidesOnly" className="carousel slide" data-ride="carousel">*/}
-                {/*    <ol className="carousel-indicators">*/}
-                {/*        <li data-target="#carouselExampleSlidesOnly" data-slide-to="0" className="active"/>*/}
-                {/*        <li data-target="#carouselExampleSlidesOnly" data-slide-to="1"/>*/}
-                {/*        <li data-target="#carouselExampleSlidesOnly" data-slide-to="2"/>*/}
-                {/*    </ol>*/}
-                {/*    <div className="carousel-inner">*/}
-                {/*        <div className="carousel-item active">*/}
-                {/*            <img className="d-block w-100" src={AccountImage} alt="First slide"/>*/}
-                {/*        </div>*/}
-                {/*        <div className="carousel-item">*/}
-                {/*            <img className="d-block w-100" src={StakeholderImage} alt="Second slide"/>*/}
-                {/*        </div>*/}
-                {/*        <div className="carousel-item">*/}
-                {/*            <img className="d-block w-100" src={StoreImage} alt="Third slide"/>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
+                <section id="intro" style={introStyle} class="clearfix">
+                    <div className="container d-flex h-100">
+                        <div className="row justify-content-center align-self-center">
+                            <div className="col-md-6 intro-info order-md-first order-last">
+                                <h2>Management Solutions<br/>for Your <span>Business!</span></h2>
+                                <div>
+                                    <a href="/login" className="btn-get-started scrollto">Get Started</a>
+                                </div>
+                            </div>
+                            <div className="col-md-6 intro-img order-md-last order-first">
+                                <img src={IntroImg} alt="" className="img-fluid"/>
+                            </div>
+                        </div>
+                    </div>
+                </section>
                 <Footer/>
             </section>
         );

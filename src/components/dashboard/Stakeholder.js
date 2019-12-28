@@ -189,9 +189,10 @@ class Stakeholder extends Component {
                                 <span className="badge badge-primary badge-pill">{stakeholder.type}</span>
                             </div>
                             <div className="col-sm-3">
-                                <button className="btn btn-secondary btn-sm float-right" data-toggle="modal"
+                                <button className="btn btn-toolbar btn-sm float-right" data-toggle="modal"
                                         data-target="#editStakeholderModel"
-                                        onClick={e => this.onStakeholderEdit(e, stakeholder.id)}>Edit
+                                        onClick={e => this.onStakeholderEdit(e, stakeholder.id)}>
+                                    <i className="fa fa-edit"/>
                                 </button>
                             </div>
                         </div>
@@ -201,17 +202,30 @@ class Stakeholder extends Component {
         }
         return (
             <section>
-                <h4>List</h4>
-                <ul className="list-group">
-                    {stakeholderList}
-                </ul>
-                <br/>
-                <div className="form-group">
-                    <button type="button" className="btn btn-primary btn-sm" data-toggle="modal"
-                            onClick={e => this.onStakeholderAdd(e)}
-                            data-target="#addStakeholderModel">Add
-                    </button>
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-lg-6">
+                            <h5>Stakeholder List</h5>
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="form-group">
+                                <button type="button" className="btn btn-dark btn-sm " data-toggle="modal"
+                                        onClick={e => this.onStakeholderAdd(e)}
+                                        data-target="#addStakeholderModel"><i className="fa fa-plus-circle"/> Add
+                                    Stakeholder
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-lg-12">
+                            <ul className="list-group">
+                                {stakeholderList}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+                <br/>
 
                 {/*add stake holder model*/}
                 <div className="modal fade" id="addStakeholderModel" tabIndex="-1" role="dialog"
@@ -219,7 +233,10 @@ class Stakeholder extends Component {
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title">Add Stakeholder</h5>
+                                <h5 className="">Add Stakeholder</h5>
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true" className="white-text">&times;</span>
+                                </button>
                             </div>
                             <div className="modal-body">
                                 <form noValidate onSubmit={e => this.onStakeholderAddSubmit(e)} autoComplete="off">
@@ -245,15 +262,11 @@ class Stakeholder extends Component {
                                                name="plateNumberAdd" onChange={e => this.change(e)}/>
                                     </div>
                                     <div className="form-group">
-                                        <button type="submit" className="btn btn-primary btn-sm button-margin">Save
+                                        <button type="submit" className="btn btn-dark btn-sm">
+                                            <i className="fa fa-save"/> Save
                                         </button>
                                     </div>
                                 </form>
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary btn-sm button-margin"
-                                        data-dismiss="modal">Close
-                                </button>
                             </div>
                         </div>
                     </div>
@@ -265,7 +278,10 @@ class Stakeholder extends Component {
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title">Edit Stakeholder</h5>
+                                <h5 className="">Edit Stakeholder</h5>
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true" className="white-text">&times;</span>
+                                </button>
                             </div>
                             <div className="modal-body">
                                 <form noValidate onSubmit={e => this.onStakeholderEditSubmit(e)} autoComplete="off">
@@ -299,20 +315,17 @@ class Stakeholder extends Component {
                                     {/*    </select>*/}
                                     {/*</div>*/}
                                     <div className="form-group">
-                                        <button type="submit" className="btn btn-primary btn-sm button-margin">Save
+                                        <button className="btn btn-danger btn-sm float-left button-margin"
+                                                onClick={e => {
+                                                    this.onDeleteStakeholder(e)
+                                                }}><i className="fa fa-trash"/> Delete
+                                        </button>
+
+                                        <button type="submit" className="btn btn-primary float-right btn-sm button-margin">
+                                            <i className="fa fa-save"/> Save
                                         </button>
                                     </div>
                                 </form>
-                            </div>
-                            <div className="modal-footer">
-                                <button className="btn btn-danger btn-sm button-margin"
-                                        onClick={e => {
-                                            this.onDeleteStakeholder(e)
-                                        }}>Delete
-                                </button>
-                                <button type="button" className="btn btn-secondary btn-sm button-margin"
-                                        data-dismiss="modal">Close
-                                </button>
                             </div>
                         </div>
                     </div>

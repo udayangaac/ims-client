@@ -1,12 +1,18 @@
 import React, {Component} from 'react';
-import Input from "@material-ui/core/Input";
 import Home from "../home/Home";
 import axios from 'axios'
 import './Login.css'
 import Header from "../common/Header";
 import Footer from "../common/Footer";
 import {getURL} from "../helpers/Config";
+import IntroBg from "../../images/intro-bg.jpg";
 
+
+let loginBackground = {
+    backgroundImage: "url(" + IntroBg + ")",
+    // marginTop:0,
+    // marginBottom:0
+};
 
 class Login extends Component {
     constructor(props) {
@@ -36,13 +42,14 @@ class Login extends Component {
             this.props.history.push('/dashboard')
         });
     }
+
     render() {
         return (
-            <section>
+            <section style={loginBackground}>
                 <Header/>
                 <div className="login-form">
                     <form onSubmit={e => this.submit(e)} noValidate autoComplete="off">
-                        <h2 className="text-center">Log in</h2>
+                        <h2 className="text-center">LOGIN</h2>
                         <div className="form-group">
                             <input className="form-control" placeholder="Username" type="text" name="username"
                                    onChange={e => this.change(e)} value={this.state.username}/>
@@ -52,10 +59,11 @@ class Login extends Component {
                                    onChange={e => this.change(e)} value={this.state.password}/>
                         </div>
                         <div className="form-group">
-                            <button type="submit" className="btn btn-primary btn-block">Log in</button>
+                            <button type="submit" className="btn btn-dark btn-sm btn-block">LOGIN</button>
                         </div>
                         <div className="clearfix">
-                            <label className="pull-left checkbox-inline"><input type="checkbox"/> Remember me</label>
+                            <label className="pull-left checkbox-inline"><input type="checkbox"/> Remember
+                                me</label>
                             <a href="#" className="pull-right">Forgot Password?</a>
                         </div>
                     </form>

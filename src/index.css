@@ -1,20 +1,49 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:500|Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500|Nunito+Sans&display=swap');
 
 body {
-  margin: 0;
-  /*font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',*/
-  /*  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',*/
-  /*  sans-serif;*/
-  font-family: 'Nunito', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    /*font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',*/
+    /*  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',*/
+    /*  sans-serif;*/
+    font-family: 'Nunito Sans', sans-serif;
+    /*-webkit-font-smoothing: antialiased;*/
+    /*-moz-osx-font-smoothing: grayscale;*/
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/*code {*/
+/*  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',*/
+/*    monospace;*/
+/*}*/
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
 }
 
-h1,h2,h3,h4,h5,h6 {
-  font-family: 'Montserrat', sans-serif;
+button {
+    font-family: 'Nunito Sans', sans-serif !important;
+    font-weight: lighter !important;
+    font-size: 14px !important;
+}
+
+td {
+    font-weight: lighter !important;
+    font-size: 14px !important;
+}
+
+.footer-copyright-wt {
+    color: #cecece;
+}
+
+.footer-copyright-wt:hover {
+  color: grey;
+  text-decoration:none;
+}
+
+.footer-copyright-bl {
+  color: #1b1b1b;
+}
+
+.footer-copyright-bl:hover {
+  color: grey;
+  text-decoration:none;
 }

@@ -4,6 +4,7 @@ import {getJwt} from "../helpers/LocalStorage";
 import axios from "axios";
 import {getURL} from "../helpers/Config";
 import {getCurrentDate} from "../helpers/Util";
+import {MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter} from 'mdbreact';
 
 
 class Transaction extends Component {
@@ -27,6 +28,9 @@ class Transaction extends Component {
             itemReturnQtyEdit: undefined,
             //delete transaction
             itemTransactionIdDelete: undefined,
+            //pdf path
+            pdfPath: undefined,
+
         }
     }
 
@@ -140,24 +144,23 @@ class Transaction extends Component {
         if (!jwt) {
             this.props.history.push('/signin')
         }
+
+        this.setState(
+            {
+                pdfPath: undefined,
+            }
+        );
         axios.get(getURL("/api/v1.0/transactions/summary-report?") + "date=" + this.state.filterDate + "&stakeholderId=" + this.state.stakeholderId,
             {
                 headers: {
                     Authorization: 'Bearer ' + jwt,
                 }
             }).then(res => {
-                console.log(res.data)
-                //http://localhost:8003/file/?files=35_2019-12-27.pdf
-                axios.get("http://localhost:8003/file/?files=35_2019-12-27.pdf",
+                this.setState(
                     {
-                        headers: {
-                            Authorization: 'Bearer ' + jwt,
-                        }
-                    }).then(res => {
-                        console.log(res.data)
+                        pdfPath: "http://sixensor.com:8003/file?name=" + res.data.path
                     }
-                ).catch(err => {
-                })
+                );
             }
         ).catch(err => {
 
@@ -312,8 +315,9 @@ class Transaction extends Component {
                         <td>
                             <div className="col-auto">
                                 <button onClick={e => this.onEditTransaction(e, transaction.id)} type="button"
-                                        className="btn btn-dark btn-sm btn-toolbar" data-toggle="modal"
-                                        data-target="#editTransactionModel">Edit
+                                        className="btn btn-toolbar btn-sm custom-edit-btn" data-toggle="modal"
+                                        data-target="#editTransactionModel">
+                                    <i className="fa fa-edit"/>
                                 </button>
                             </div>
                         </td>
@@ -356,7 +360,9 @@ class Transaction extends Component {
                                         </div>
                                     </div>
                                     <div className="col-auto">
-                                        <button type="submit" className="btn btn-primary mb-2">Apply Filters</button>
+                                        <button type="submit" className="btn btn-dark mb-2"><i
+                                            className="fa fa-filter"/> Apply Filters
+                                        </button>
                                     </div>
                                 </div>
                             </form>
@@ -379,34 +385,32 @@ class Transaction extends Component {
                                 </tbody>
                             </table>
                         </div>
-                        <div>
-                            <div className="col-auto">
-                                <button type="button" className="btn btn-primary btn-sm" data-toggle="modal"
-                                        data-target="#addTransactionModel" onClick={e => {
-                                    this.onAddTransaction(e)
-                                }}>Add Transaction
-                                </button>
-                            </div>
+                        <div className="col-md-6">
+                            <button type="button" className="btn btn-dark btn-sm  float-right" data-toggle="modal"
+                                    data-target="#addTransactionModel" onClick={e => {
+                                this.onAddTransaction(e)
+                            }}><i className="fa fa-plus-circle"/> Add Transaction
+                            </button>
                         </div>
                     </div>
                     <div>
-                        <table className="table table-bordered">
+                        <table className="table table-sm table-bordered">
                             <thead className="thead-dark">
                             <tr>
-                                <th>Tid</th>
-                                <th>Date</th>
-                                <th>Item Name</th>
-                                <th>Item Price (LKR)</th>
-                                <th>Release Qty</th>
-                                <th>Return Qty</th>
-                                <th>Earnings (LKR)</th>
-                                <th>Manage</th>
+                                <th className="text-center">Tid</th>
+                                <th className="text-center">Date</th>
+                                <th className="text-center">Item Name</th>
+                                <th className="text-center">Item Price (LKR)</th>
+                                <th className="text-center">Release Qty</th>
+                                <th className="text-center">Return Qty</th>
+                                <th className="text-center">Earnings (LKR)</th>
+                                <th className="text-center">Edit</th>
                             </tr>
                             </thead>
                             <tbody>
                             {transactionRows}
                             <tr>
-                                <td colSpan="4"></td>
+                                <td colSpan="5"></td>
                                 <td><b>Total (LKR)</b></td>
                                 <td className="text-right">{totalValue}</td>
                             </tr>
@@ -414,7 +418,10 @@ class Transaction extends Component {
                         </table>
                     </div>
                     <div className="col-auto">
-                        <button onClick={e => this.onExportPdf(e)} className="btn btn-primary mb-2">Export PDF
+                        <button data-toggle="modal"
+                                data-target="#pdfViewModel" onClick={e => this.onExportPdf(e)}
+                                className="btn btn-danger primary btn-sm mb-2">
+                            <i className="fa fa-file-pdf-o"/> Export PDF
                         </button>
                     </div>
 
@@ -425,7 +432,10 @@ class Transaction extends Component {
                         <div className="modal-dialog" role="document">
                             <div className="modal-content">
                                 <div className="modal-header">
-                                    <h5 className="modal-title">Add Transaction</h5>
+                                    <h5>Add Transaction</h5>
+                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true" className="white-text">&times;</span>
+                                    </button>
                                 </div>
                                 <div className="modal-body">
                                     <form onSubmit={e => this.onAddTransactionSubmit(e)} noValidate autoComplete="off">
@@ -433,6 +443,7 @@ class Transaction extends Component {
                                             <label htmlFor="itemAdd">Type</label>
                                             <select onChange={e => this.change(e)} className="form-control" id="itemAdd"
                                                     name="itemAdd">
+                                                <option value="0">NONE</option>
                                                 {items}
                                             </select>
                                         </div>
@@ -449,15 +460,11 @@ class Transaction extends Component {
                                                    name="itemReturnQtyAdd" onChange={e => this.change(e)}/>
                                         </div>
                                         <div className="form-group">
-                                            <button type="submit" className="btn btn-primary btn-sm button-margin">Save
+                                            <button type="submit" className="btn btn-dark btn-sm button-margin">
+                                                <i className="fa fa-save"/> Save
                                             </button>
                                         </div>
                                     </form>
-                                </div>
-                                <div className="modal-footer">
-                                    <button type="button" className="btn btn-secondary btn-sm button-margin"
-                                            data-dismiss="modal">Close
-                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -470,8 +477,11 @@ class Transaction extends Component {
                         <div className="modal-dialog" role="document">
                             <div className="modal-content">
                                 <div className="modal-header">
-                                    <h5 className="modal-title">Edit Transaction
+                                    <h5 className="">Edit Id
                                         : {this.state.itemTransactionIdEdit}</h5>
+                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true" className="white-text">&times;</span>
+                                    </button>
                                 </div>
                                 <div className="modal-body">
                                     <form onSubmit={e => this.onEditTransactionSubmit(e)} noValidate autoComplete="off">
@@ -490,25 +500,39 @@ class Transaction extends Component {
                                                    name="itemReturnQtyEdit" onChange={e => this.change(e)}/>
                                         </div>
                                         <div className="form-group">
-                                            <button type="submit" className="btn btn-primary btn-sm button-margin">Save
+                                            <button type="submit" className="btn btn-dark btn-sm button-margin">
+                                                <i className="fa fa-save"/> Save
                                             </button>
                                             <button onClick={e => this.onDeleteTransaction(e)}
-                                                    className="btn btn-danger btn-sm button-margin">Delete
-                                                Transaction
+                                                    className="btn btn-danger btn-sm button-margin">
+                                                <i className="fa fa-trash"/> Delete
                                             </button>
                                         </div>
                                     </form>
-                                </div>
-                                <div className="modal-footer">
-                                    <button type="button" className="btn btn-secondary btn-sm button-margin"
-                                            data-dismiss="modal">Close
-                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-
+                    <div className="modal fade" id="pdfViewModel" tabIndex="-1" role="dialog"
+                         aria-labelledby="" aria-hidden="true">
+                        <div className="modal-dialog modal-xl" role="document">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h5>Transactions - {this.state.stakeholderName} ({this.state.filterDate})</h5>
+                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true" className="white-text">&times;</span>
+                                    </button>
+                                </div>
+                                <div className="modal-body">
+                                    <iframe id="fred"
+                                            src={this.state.pdfPath} frameBorder="0" scrolling="auto"
+                                            height="600"
+                                            width="100%"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         );
