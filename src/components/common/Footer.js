@@ -48,7 +48,7 @@ class Footer extends Component {
                         <div className="col-md-4 footer-brand animated fadeInLeft text-center">
                             <img src={LogoSQ} style={imageStyleSQ}/>
                             <br/>
-                            <h4>Sixensor Inc.</h4>
+                            <h4>Sixensor</h4>
                             <p>© 2020 , All rights reserved</p>
                         </div>
                         <div className="col-md-4 footer-nav animated fadeInUp">
