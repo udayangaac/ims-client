@@ -13,3 +13,11 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: normal;
 }
+
+.navbar-brand {
+    margin: 0 0 15px;
+    color: black; /*Change active text color here*/
+    font-family: 'Montserrat', sans-serif;
+    font-weight: normal;
+    font-size: 24px;
+}

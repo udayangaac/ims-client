@@ -7,10 +7,14 @@ import DashboardFooter from "../common/DashboardFooter";
 import Item from "./Item";
 import './Dashboard.css'
 import {getProfile} from "../helpers/LocalStorage";
+import IntroBg from "../../images/home_bg.jpeg";
+
+let styleSubHeader = {
+    backgroundImage: "url(" + IntroBg + ")",
+};
 
 
 class Dashboard extends Component {
-
     render() {
         let businessProfileName = "";
         let profile = getProfile();
@@ -21,17 +25,16 @@ class Dashboard extends Component {
             <section>
                 <Header/>
                 <div id="dashboardContainer" className="container">
-                    <div id="dashboardHeader" className="container-fluid">
+                    <div style={styleSubHeader} id="dashboardHeader" className="container-fluid">
                         <div className="row">
                             <div className="col-sm-6 col-md-6">
                                 <h4><b>DASHBOARD</b></h4>
                             </div>
                             <div className="col-sm-6 col-md-6">
-                                <h5><b>{businessProfileName}</b></h5>
+                                {/*<h5><b>{businessProfileName}</b></h5>*/}
                             </div>
                         </div>
                     </div>
-
                     <br/>
                     <div className="container">
                         <ul className="nav nav-tabs" role="tablist">
