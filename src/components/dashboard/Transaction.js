@@ -234,7 +234,7 @@ class Transaction extends Component {
                 release_qty: Number(this.state.itemReleaseQtyEdit),
                 return_qty: Number(this.state.itemReturnQtyEdit),
                 stakeholder_id: Number(this.state.stakeholderId),
-                transaction_id: Number(this.state.itemTransactionIdEdit)
+                id: Number(this.state.itemTransactionIdEdit)
             }),
             {
                 headers: {
