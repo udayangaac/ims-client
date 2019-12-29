@@ -312,7 +312,7 @@ class Transaction extends Component {
                         <td className="text-center">{transaction.release_qty}</td>
                         <td className="text-center">{transaction.return_qty}</td>
                         <td className="text-right">{transaction.earnings}</td>
-                        <td>
+                        <td className="text-center">
                             <div className="col-auto">
                                 <button onClick={e => this.onEditTransaction(e, transaction.id)} type="button"
                                         className="btn btn-toolbar btn-sm custom-edit-btn" data-toggle="modal"
