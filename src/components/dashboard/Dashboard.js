@@ -43,7 +43,8 @@ class Dashboard extends Component {
                                    href="#home">Transactions</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link dashboard-tab" data-toggle="tab" href="#menu1">Stakeholders and
+                                <a className="nav-link dashboard-tab" data-toggle="tab" href="#menu1">Stakeholders
+                                    and
                                     Items</a>
                             </li>
                             {/*<li className="nav-item">*/}
@@ -73,6 +74,7 @@ class Dashboard extends Component {
                             {/*</div>*/}
                         </div>
                         <br/>
+
                     </div>
                 </div>
                 <DashboardFooter/>

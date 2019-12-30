@@ -4,6 +4,11 @@ import {NavBarDetails} from "../helpers/NavBarDetail";
 import "./Header.css"
 
 
+let customStyle = {
+    backgroundColor:"black",
+    color:"white"
+};
+
 class Header extends Component {
     render() {
         return (
@@ -11,12 +16,12 @@ class Header extends Component {
                 <div className="container">
                     <p className="navbar-brand" href="#">
                         {/*<img src={ProjectLogo} height={40} alt="logo"/>*/}
-                        Ranga Bakers, Bulathsinghala.
+                        RANGA BAKERS
                     </p>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse"
+                    <button style={customStyle} className="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                             aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"/>
+                        Menu
                     </button>
                     <NavBarDetails/>
                 </div>
@@ -24,5 +29,6 @@ class Header extends Component {
         );
     }
 }
+
 export default Header;
 

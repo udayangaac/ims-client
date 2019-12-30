@@ -21,7 +21,7 @@ class Home extends Component {
                             <div className="col-md-6 intro-info order-md-first order-last">
                                 <h2>Inventory<br/>Management<span> System</span></h2>
                                 <div>
-                                    <a href="/login" className="btn btn-dark ">LOGIN</a>
+                                    <a href="/signin" className="btn btn-dark ">LOGIN</a>
                                 </div>
                             </div>
                             <div className="col-md-6 intro-img order-md-last order-first">
