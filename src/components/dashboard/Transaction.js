@@ -35,10 +35,8 @@ class Transaction extends Component {
     }
 
     componentDidMount() {
-
         const jwt = getJwt();
         if (!jwt) {
-            // return to login page if
             this.props.history.push('/signin')
         }
         axios.get(getURL("/api/v1.0/stakeholders"),
@@ -62,7 +60,6 @@ class Transaction extends Component {
                 this.loadTransactions();
             }
         ).catch(err => {
-
         })
 
     }

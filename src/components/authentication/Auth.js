@@ -12,7 +12,6 @@ class Auth extends Component {
             user: undefined
         }
     }
-
     componentDidMount() {
         const jwt = getJwt();
         if (!jwt) {
